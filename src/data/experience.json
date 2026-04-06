@@ -1,0 +1,24 @@
+[
+  {
+    "id": "exp-1",
+    "role": "Web Development & Networking Intern",
+    "company": "BCPL (A Govt. of India Enterprise)",
+    "location": "Assam, India",
+    "duration": "Jan 2025",
+    "points": [
+      "Engineered backend logic and data interfaces using the ASP.NET framework, focusing on system reliability and efficient data routing.",
+      "Analyzed enterprise-level network management protocols and topology, building a practical foundation in network optimization and distributed environments."
+    ]
+  },
+  {
+    "id": "exp-2",
+    "role": "Blockchain Technology Intern",
+    "company": "NIT Meghalaya",
+    "location": "Meghalaya, India",
+    "duration": "Jun 2024 - Jul 2024",
+    "points": [
+      "Architected a decentralized booking system using Blockchain technology, focusing on secure state management, cryptographic protocols, and distributed data integrity.",
+      "Gained hands-on experience with consensus algorithms and distributed systems architecture."
+    ]
+  }
+]

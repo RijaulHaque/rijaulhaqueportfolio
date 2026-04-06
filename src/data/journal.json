@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "date": "2024-05-12",
+    "title": "Exploring Deep Learning Optimization",
+    "tags": ["AI", "Optimization", "Research"],
+    "content": "Today I spent time researching how quantization affects the performance of neural networks on edge devices. Found some promising results using TensorFlow Lite.",
+    "media": []
+  },
+  {
+    "id": 2,
+    "date": "2024-05-10",
+    "title": "Portfolio Architecture Update",
+    "tags": ["WebDev", "React"],
+    "content": "Started the process of migrating the old portfolio to a modern React frontend with Tailwind CSS to ensure it looks crisp on high DPI screens and boasts improved performance.",
+    "media": []
+  },
+  {
+    "id": 3,
+    "date": "2025-04-07",
+    "title": "এটা নৱ-চিন্তা!",
+    "tags": ["Assamese", "Poetry"],
+    "content": "Writing New Thoughts",
+    "media": []
+  }
+
+]

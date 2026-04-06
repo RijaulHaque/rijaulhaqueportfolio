@@ -1,0 +1,7 @@
+{
+  "languages": ["Java", "Python", "C", "C++", "Go", "JavaScript", "HTML/CSS"],
+  "frameworks": ["Spring Boot", "Spring Data JPA", "WebFlux", "TensorFlow", "ASP.NET", "Pandas", "NumPy", "NLTK", "Scikit-Learn", "Matplotlib", "Open3D", "OpenCV"],
+  "tools": ["Git", "Docker", "AWS", "MySQL", "Linux", "Hyperledger Fabric", "OpenRouter API", "iText (PDF)", "ROS2 jazzy"],
+  "web": ["Thymeleaf", "REST APIs", "HTML/CSS/JS"],
+  "soft": ["Problem Solving", "Team Collaboration", "Project Management", "Technical Documentation"]
+}

@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@config "../tailwind.config.js";
+
+/* ── Assamese / Bengali script font ───────────────────────── */
+@font-face {
+  font-family: 'Geetanjali';
+  src: url('./assets/fonts/GEETANJALIUNIB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --background: #fdfdfd;
+    --foreground: #2d5854;
+    --card: #f8fafc;
+    --card-foreground: #2d5854;
+    --primary: #2d5854;
+    --primary-foreground: #ffffff;
+    --border: #2d5854;
+    --muted: #a3b8b4;
+    --secondary: #e4ece9;
+    --shadow-color: #2f5c53;
+  }
+  .dark {
+    --background: #09120f;
+    --foreground: #e4ece9;
+    --card: #0e1e19;
+    --card-foreground: #e4ece9;
+    --primary: #e4ece9;
+    --primary-foreground: #09120f;
+    --border: #a3b8b4;
+    --muted: #2d5854;
+    --secondary: #12211d;
+    --shadow-color: #a3b8b4;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: 'Century Schoolbook', 'Geetanjali', 'Times New Roman', Times, serif;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #a3b8b4;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2d5854;
+}
+
+/* Vertical Marquee Animations */
+@keyframes vertical-scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes vertical-scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+.animate-vertical-up {
+  animation: vertical-scroll-up 30s linear infinite;
+}
+
+.animate-vertical-down {
+  animation: vertical-scroll-down 30s linear infinite;
+}
+

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cert-1",
+    "title": "Mathematical Foundations for Machine Learning",
+    "issuer": "NPTEL (Indian Institute of Science Bangalore)",
+    "date": "Oct 2025"
+  },
+  {
+    "id": "cert-2",
+    "title": "Programming with Generative AI",
+    "issuer": "NPTEL (Indian Institute of Science Bangalore)",
+    "date": "Oct 2025"
+  },
+  {
+    "id": "cert-3",
+    "title": "Machine Learning Specialization",
+    "issuer": "Coursera (Stanford University)",
+    "date": "Oct 2024"
+  },
+  {
+    "id": "cert-4",
+    "title": "Linear Algebra",
+    "issuer": "Coursera (Johns Hopkins University)",
+    "date": "Mar 2026"
+  }
+]

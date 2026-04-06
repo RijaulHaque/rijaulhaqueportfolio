@@ -1,0 +1,30 @@
+[
+  {
+    "id": "proj-1",
+    "title": "LiDAR & RGB-D Multimodal Sensor Fusion System",
+    "description": "Engineered a hands-on multimodal data pipeline achieving high-fidelity 3D color-depth fusion by spatially aligning sparse LiDAR point clouds with RGB-D visual streams. Currently utilizing this synthesized 3D environment to research deep learning architectures.",
+    "tech": ["Python", "Open3D", "OpenCV", "PCL", "ROS2", "Deep Learning"],
+    "link": "https://github.com/RijaulHaque"
+  },
+  {
+    "id": "proj-2",
+    "title": "Contextual Bandits for Movie Recommendation",
+    "description": "Engineered and evaluated a real-time recommendation engine using Contextual Multi-Armed Bandits (CMAB). Implemented LinUCB, Thompson Sampling, and a novel Stochastic Reward formulation resulting in a 53.42% CTR.",
+    "tech": ["Python", "NumPy", "Pandas", "Scikit-learn", "Matplotlib", "RL"],
+    "link": "https://github.com/RijaulHaque/contextual-bandits-movie-recommender"
+  },
+  {
+    "id": "proj-3",
+    "title": "AI-Powered Career Analytics & LLM Integration",
+    "description": "Integrated large language models (DeepSeek-v3.1 via OpenRouter API) to dynamically process user profiles. Architected robust data persistence with Spring Data JPA and MySQL.",
+    "tech": ["Java", "LLM APIs", "Spring Boot", "MySQL", "REST"],
+    "link": "https://github.com/RijaulHaque/CareerGO-Fullstack"
+  },
+  {
+    "id": "proj-4",
+    "title": "Relational Database Optimization for Academic Systems",
+    "description": "Designed and optimized relational database schemas for a high-throughput attendance tracking system, focusing on efficient data retrieval and secure authorization roles.",
+    "tech": ["SQL", "ASP.NET"],
+    "link": "https://github.com/RijaulHaque/Scholarly"
+  }
+]
