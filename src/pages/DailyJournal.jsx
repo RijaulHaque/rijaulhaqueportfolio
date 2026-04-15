@@ -402,11 +402,47 @@ function JournalEntry({ entry }) {
         </div>
 
         <SelectionTranslator>
+          {/* Title */}
           <h3 className="text-2xl font-extrabold mb-4 text-primary uppercase">{entry.title}</h3>
+        
+          {/* Content */}
           <p className="text-primary/80 leading-relaxed font-semibold text-justify text-lg mb-6">
             {entry.content}
           </p>
+        
+          {/* ── NEW: Stylized Author & Metadata Block ── */}
+          {(entry.author || entry.location) && (
+            <div className="mb-6 flex flex-wrap gap-4 items-center py-3 border-y-2 border-primary/10 bg-primary/5 px-4">
+              {entry.author && (
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">Author</span>
+                  <span className="text-sm font-black text-primary uppercase">{entry.author}</span>
+                </div>
+              )}
+              {entry.location && (
+                <div className="flex items-center gap-2 border-l-2 border-primary/20 pl-4">
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">Location</span>
+                  <span className="text-sm font-bold text-primary/70">{entry.location}</span>
+                </div>
+              )}
+            </div>
+          )}
         </SelectionTranslator>
+        
+        {/* ── External Resource Link (As a Button) ── */}
+        {entry.external_resource && (
+          <div className="mb-8">
+            <a 
+              href={entry.external_resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-primary bg-primary text-primary-foreground font-black uppercase text-xs tracking-wider shadow-[4px_4px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            >
+              <Share2 size={14} />
+              {entry.external_resource.label || 'Read Reference'}
+            </a>
+          </div>
+        )}
 
         {/* ── NEW: External Resource Link ────────────────── */}
         {entry.external_resource && (
