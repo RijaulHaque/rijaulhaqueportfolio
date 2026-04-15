@@ -415,13 +415,13 @@ function JournalEntry({ entry }) {
             <div className="mb-6 flex flex-wrap gap-4 items-center py-3 border-y-2 border-primary/10 bg-primary/5 px-4">
               {entry.author && (
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">Author</span>
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">By</span>
                   <span className="text-sm font-black text-primary uppercase">{entry.author}</span>
                 </div>
               )}
               {entry.location && (
                 <div className="flex items-center gap-2 border-l-2 border-primary/20 pl-4">
-                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">Location</span>
+                  <span className="text-[10px] font-black uppercase tracking-tighter text-primary/40">From</span>
                   <span className="text-sm font-bold text-primary/70">{entry.location}</span>
                 </div>
               )}
