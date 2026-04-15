@@ -321,6 +321,7 @@ function Lightbox({ items, startIndex, onClose }) {
 }
 
 /* ── Single journal entry card ───────────────────────────── */
+/* ── Single journal entry card ───────────────────────────── */
 function JournalEntry({ entry }) {
   const key = `journal_${entry.id}`;
 
@@ -337,22 +338,19 @@ function JournalEntry({ entry }) {
   }, []);
 
   /* Likes / Dislikes */
-  const [vote, setVote]       = useState(() => getLS(`${key}_vote`, null)); // 'like' | 'dislike' | null
-  const [likes, setLikes]     = useState(() => getLS(`${key}_likes`, 0));
+  const [vote, setVote] = useState(() => getLS(`${key}_vote`, null)); 
+  const [likes, setLikes] = useState(() => getLS(`${key}_likes`, 0));
   const [dislikes, setDislikes] = useState(() => getLS(`${key}_dislikes`, 0));
 
   const handleVote = (type) => {
     let newLikes = likes, newDislikes = dislikes, newVote = vote;
     if (vote === type) {
-      // toggle off
       if (type === 'like') newLikes--;
       else newDislikes--;
       newVote = null;
     } else {
-      // remove old vote first
       if (vote === 'like') newLikes--;
       if (vote === 'dislike') newDislikes--;
-      // apply new vote
       if (type === 'like') newLikes++;
       else newDislikes++;
       newVote = type;
@@ -376,7 +374,7 @@ function JournalEntry({ entry }) {
   };
 
   /* Media lightbox */
-  const [lightbox, setLightbox] = useState(null); // index | null
+  const [lightbox, setLightbox] = useState(null);
   const media = entry.media || [];
 
   return (
@@ -392,12 +390,10 @@ function JournalEntry({ entry }) {
             <Calendar size={16} className="mr-2" />
             {entry.date}
           </div>
-          {/* View count */}
           <div className="flex items-center gap-1.5 text-sm font-bold text-primary/60">
             <Eye size={15} />
             <span>{views} {views === 1 ? 'view' : 'views'}</span>
           </div>
-          {/* Tags */}
           <div className="flex flex-wrap gap-2 ml-auto">
             {entry.tags.map(tag => (
               <span key={tag} className="text-xs font-extrabold text-primary/60 uppercase tracking-widest">#{tag}</span>
@@ -406,12 +402,26 @@ function JournalEntry({ entry }) {
         </div>
 
         <SelectionTranslator>
-          {/* Title */}
           <h3 className="text-2xl font-extrabold mb-4 text-primary uppercase">{entry.title}</h3>
-
-          {/* Content */}
-          <p className="text-primary/80 leading-relaxed font-semibold text-justify text-lg mb-6">{entry.content}</p>
+          <p className="text-primary/80 leading-relaxed font-semibold text-justify text-lg mb-6">
+            {entry.content}
+          </p>
         </SelectionTranslator>
+
+        {/* ── NEW: External Resource Link ────────────────── */}
+        {entry.external_resource && (
+          <div className="mb-8">
+            <a 
+              href={entry.external_resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-primary bg-primary text-primary-foreground font-black uppercase text-xs tracking-wider shadow-[4px_4px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            >
+              <Share2 size={14} />
+              {entry.external_resource.label || 'Read Reference'}
+            </a>
+          </div>
+        )}
 
         {/* ── Media gallery ──────────────────────────────── */}
         {media.length > 0 && (
@@ -438,8 +448,6 @@ function JournalEntry({ entry }) {
 
         {/* ── Action bar ─────────────────────────────────── */}
         <div className="flex items-center gap-3 pt-4 border-t border-primary/20">
-
-          {/* Like */}
           <button
             onClick={() => handleVote('like')}
             className={`flex items-center gap-2 px-4 py-2 border-2 font-bold text-sm transition-all active:translate-y-0.5
@@ -451,7 +459,6 @@ function JournalEntry({ entry }) {
             <span>{likes}</span>
           </button>
 
-          {/* Dislike */}
           <button
             onClick={() => handleVote('dislike')}
             className={`flex items-center gap-2 px-4 py-2 border-2 font-bold text-sm transition-all active:translate-y-0.5
@@ -463,7 +470,6 @@ function JournalEntry({ entry }) {
             <span>{dislikes}</span>
           </button>
 
-          {/* Share */}
           <button
             onClick={handleShare}
             className="ml-auto flex items-center gap-2 px-4 py-2 border-2 border-primary text-primary font-bold text-sm hover:bg-primary/10 transition-all active:translate-y-0.5"
@@ -471,18 +477,15 @@ function JournalEntry({ entry }) {
             <Share2 size={16} />
             <span>{copied ? 'Link Copied!' : 'Share'}</span>
           </button>
-
         </div>
       </div>
 
-      {/* Lightbox */}
       {lightbox !== null && (
         <Lightbox items={media} startIndex={lightbox} onClose={() => setLightbox(null)} />
       )}
     </div>
   );
 }
-
 /* ── Page ────────────────────────────────────────────────── */
 export default function DailyJournal() {
   const [showAdminForm, setShowAdminForm] = useState(false);
