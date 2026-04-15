@@ -131,6 +131,164 @@ const getLS = (key, fallback) => {
 };
 const setLS = (key, value) => { try { localStorage.setItem(key, JSON.stringify(value)); } catch {} };
 
+/* ── Admin Mode Editor ───────────────────────────────── */
+function AdminEditor({ onCancel, onSuccess }) {
+  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({ title: '', tags: '', content: '', media: [] });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch('/api/add-journal-entry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, password })
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Failed to publish');
+
+      onSuccess();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const addMediaField = () => {
+    setFormData(prev => ({ 
+      ...prev, 
+      media: [...prev.media, { type: 'image', src: '', caption: '' }] 
+    }));
+  };
+
+  return (
+    <div className="bg-card border-4 border-primary p-6 md:p-10 mb-12 shadow-[8px_8px_0px_var(--shadow-color)] animate-in fade-in slide-in-from-top-4 duration-500">
+      <div className="flex items-center justify-between mb-8 border-b-2 border-primary pb-4">
+        <h2 className="text-3xl font-extrabold uppercase text-primary">New Journal Entry</h2>
+        <button onClick={onCancel} className="text-primary hover:text-red-500 transition-colors"><X size={28} /></button>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        <div>
+          <label className="block text-sm font-bold uppercase tracking-wider mb-2">Admin Password</label>
+          <input 
+            type="password" 
+            required 
+            className="w-full bg-background border-2 border-primary p-3 font-bold focus:shadow-[4px_4px_0px_var(--primary-color)] outline-none"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-bold uppercase tracking-wider mb-2">Title</label>
+            <input 
+              required 
+              className="w-full bg-background border-2 border-primary p-3 font-bold uppercase"
+              value={formData.title}
+              onChange={e => setFormData({...formData, title: e.target.value})}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-bold uppercase tracking-wider mb-2">Tags (Comma separated)</label>
+            <input 
+              className="w-full bg-background border-2 border-primary p-3 font-bold"
+              placeholder="AI, Research, Personal"
+              value={formData.tags}
+              onChange={e => setFormData({...formData, tags: e.target.value})}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label className="block text-sm font-bold uppercase tracking-wider mb-2">Content</label>
+          <textarea 
+            required 
+            rows={6}
+            className="w-full bg-background border-2 border-primary p-3 font-bold leading-relaxed"
+            value={formData.content}
+            onChange={e => setFormData({...formData, content: e.target.value})}
+          />
+        </div>
+
+        <div className="border-t-2 border-primary/10 pt-6">
+          <div className="flex items-center justify-between mb-4">
+            <label className="text-sm font-bold uppercase tracking-wider">Media Attachments (Optional URLs)</label>
+            <button 
+              type="button"
+              onClick={addMediaField}
+              className="px-4 py-1.5 border-2 border-primary bg-primary text-primary-foreground font-extrabold text-xs uppercase hover:opacity-80 transition-opacity"
+            >
+              + Add Media
+            </button>
+          </div>
+          
+          <div className="space-y-4">
+            {formData.media.map((m, i) => (
+              <div key={i} className="flex flex-wrap gap-4 p-4 border-2 border-primary/20 bg-primary/5">
+                <select 
+                  className="bg-background border-2 border-primary p-2 font-bold text-xs"
+                  value={m.type}
+                  onChange={e => {
+                    const next = [...formData.media];
+                    next[i].type = e.target.value;
+                    setFormData({...formData, media: next});
+                  }}
+                >
+                  <option value="image">Image</option>
+                  <option value="video">Video</option>
+                </select>
+                <input 
+                  placeholder="Source URL (https://...)"
+                  className="flex-1 bg-background border-2 border-primary p-2 font-bold text-xs min-w-[200px]"
+                  value={m.src}
+                  onChange={e => {
+                    const next = [...formData.media];
+                    next[i].src = e.target.value;
+                    setFormData({...formData, media: next});
+                  }}
+                />
+                <button 
+                  type="button"
+                  onClick={() => {
+                    const next = formData.media.filter((_, idx) => idx !== i);
+                    setFormData({...formData, media: next});
+                  }}
+                  className="text-red-500 hover:text-red-700"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {error && (
+          <div className="bg-red-500/10 border-2 border-red-500 p-4 text-red-500 font-bold flex items-center gap-3">
+            <X size={20} /> {error}
+          </div>
+        )}
+
+        <button 
+          type="submit" 
+          disabled={loading}
+          className="w-full bg-primary text-primary-foreground py-4 font-black text-xl uppercase tracking-[0.2em] shadow-[6px_6px_0px_var(--shadow-color)] hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--shadow-color)] active:translate-y-0 disabled:opacity-50 transition-all"
+        >
+          {loading ? 'Publishing via GitHub...' : 'Publish to Journal'}
+        </button>
+      </form>
+    </div>
+  );
+}
+
 /* ── Lightweight lightbox ────────────────────────────────── */
 function Lightbox({ items, startIndex, onClose }) {
   const [idx, setIdx] = useState(startIndex);
@@ -327,6 +485,8 @@ function JournalEntry({ entry }) {
 
 /* ── Page ────────────────────────────────────────────────── */
 export default function DailyJournal() {
+  const [showAdminForm, setShowAdminForm] = useState(false);
+
   return (
     <div className="w-full max-w-4xl mx-auto px-6 md:px-16 space-y-12 py-16">
 
@@ -341,6 +501,27 @@ export default function DailyJournal() {
           My personal log of thoughts, learnings, and progress throughout my journey in tech.
         </p>
       </div>
+
+      {/* Admin Mode Toggle (Hidden Key or Icon) */}
+      <div className="flex justify-end -mt-8">
+        <button 
+          onClick={() => setShowAdminForm(true)}
+          className="opacity-10 hover:opacity-100 transition-opacity p-2 text-primary"
+          title="Admin Writing Mode"
+        >
+          <NotebookPen size={16} />
+        </button>
+      </div>
+
+      {showAdminForm && (
+        <AdminEditor 
+          onCancel={() => setShowAdminForm(false)} 
+          onSuccess={() => {
+            setShowAdminForm(false);
+            alert('Success! Your entry was committed to GitHub. Redploy is starting... Check back in about a minute.');
+          }}
+        />
+      )}
 
       <div className="relative border-l-2 border-primary ml-4 md:ml-0 space-y-12 pt-8">
         {journalData.map((entry) => (
