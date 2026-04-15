@@ -428,21 +428,6 @@ function JournalEntry({ entry }) {
             </div>
           )}
         </SelectionTranslator>
-        
-        {/* ── External Resource Link (As a Button) ── */}
-        {entry.external_resource && (
-          <div className="mb-8">
-            <a 
-              href={entry.external_resource.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-primary bg-primary text-primary-foreground font-black uppercase text-xs tracking-wider shadow-[4px_4px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
-            >
-              <Share2 size={14} />
-              {entry.external_resource.label || 'Read Reference'}
-            </a>
-          </div>
-        )}
 
         {/* ── NEW: External Resource Link ────────────────── */}
         {entry.external_resource && (
