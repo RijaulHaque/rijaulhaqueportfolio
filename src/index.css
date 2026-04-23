@@ -11,6 +11,39 @@
   font-display: swap;
 }
 
+/* ── Century Schoolbook (C059) local font ─────────────────── */
+@font-face {
+  font-family: 'Century Schoolbook';
+  src: url('./assets/fonts/new_century_schoolbook/C059-Roman.ttf') format('truetype');
+  font-weight: 400 600; /* Covers normal, medium, and semibold */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Schoolbook';
+  src: url('./assets/fonts/new_century_schoolbook/C059-Bold.ttf') format('truetype');
+  font-weight: 700 900; /* Covers bold, extrabold, and black */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Schoolbook';
+  src: url('./assets/fonts/new_century_schoolbook/C059-Italic.ttf') format('truetype');
+  font-weight: 400 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Century Schoolbook';
+  src: url('./assets/fonts/new_century_schoolbook/C059-BdIta.ttf') format('truetype');
+  font-weight: 700 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: #fdfdfd;
@@ -46,7 +79,8 @@
     background-color: var(--background);
     color: var(--foreground);
     font-feature-settings: "rlig" 1, "calt" 1;
-    font-family: 'Century Schoolbook', 'Geetanjali', 'Times New Roman', Times, serif;
+    font-family: 'Century Schoolbook', 'Geetanjali', serif;
+    font-weight: 400; /* Default weight */
   }
 }
 
@@ -82,5 +116,9 @@
 
 .animate-vertical-down {
   animation: vertical-scroll-down 30s linear infinite;
+}
+
+.font-geetanjali {
+  font-family: 'Geetanjali', serif;
 }
 
