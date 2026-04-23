@@ -11,7 +11,7 @@ export default function Navbar() {
 
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return localStorage.getItem('theme') === 'dark';
     }
     return false;
   });
@@ -75,7 +75,7 @@ export default function Navbar() {
   const timeParts = formatTime(time);
 
   return (
-    <nav className="w-full fixed top-0 left-0 right-0 z-50 bg-secondary border-b-2 border-primary flex justify-between items-center px-4 sm:px-8 py-3" style={{ backgroundColor: 'var(--secondary)' }}>
+    <nav className="w-full fixed top-0 left-0 right-0 z-[100] bg-secondary border-b-2 border-primary flex justify-between items-center px-4 sm:px-8 py-3" style={{ backgroundColor: 'var(--secondary)' }}>
       {/* Logo Section */}
       <Link 
         to="/" 
@@ -155,7 +155,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="absolute top-16 right-4 md:hidden bg-secondary border-2 border-primary w-48 shadow-lg">
+        <div className="absolute top-16 right-4 md:hidden bg-background border-2 border-primary w-56 shadow-[8px_8px_0px_var(--shadow-color)] z-[100]">
           <div className="flex flex-col py-2">
             {navLinks.map((link) => (
               <Link

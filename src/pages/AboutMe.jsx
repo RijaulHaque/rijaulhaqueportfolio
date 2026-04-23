@@ -17,7 +17,7 @@ export default function AboutMe() {
         <div className="w-full lg:w-2/3 space-y-6">
           <div className="flex items-center gap-4">
             <User className="text-primary flex-shrink-0" size={40} />
-            <h1 className="text-4xl md:text-5xl font-extrabold tracking-widest text-primary uppercase">About Me</h1>
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-wide md:tracking-widest text-primary uppercase">About Me</h1>
           </div>
           <div className="space-y-4 text-lg md:text-xl text-primary/80 font-bold text-justify leading-relaxed">
             <p>
@@ -50,7 +50,7 @@ export default function AboutMe() {
           {/* NIT */}
           <div className="flex flex-col bg-card border-2 border-primary shadow-[6px_6px_0px_var(--shadow-color)]">
             <div className="h-64 border-b-2 border-primary overflow-hidden">
-              <img src={nitImg} alt="NIT Meghalaya Internship" className="w-full h-full object-cover object-center grayscale hover:grayscale-0 transition-all duration-500" />
+              <img src={nitImg} alt="NIT Meghalaya Internship" className="w-full h-full object-cover object-center grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-primary mb-2 uppercase">National Institute of Technology Meghalaya</h3>
@@ -65,7 +65,7 @@ export default function AboutMe() {
           {/* BCPL */}
           <div className="flex flex-col bg-card border-2 border-primary shadow-[6px_6px_0px_var(--shadow-color)]">
             <div className="h-64 border-b-2 border-primary overflow-hidden">
-              <img src={bcplImg} alt="BCPL Internship" className="w-full h-full object-cover object-[50%_55%] grayscale hover:grayscale-0 transition-all duration-500" />
+              <img src={bcplImg} alt="BCPL Internship" className="w-full h-full object-cover object-[50%_55%] grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-bold text-primary mb-2 uppercase">Brahmaputra Cracker and Polymer Limited</h3>

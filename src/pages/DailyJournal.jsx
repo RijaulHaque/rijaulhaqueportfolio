@@ -517,7 +517,7 @@ export default function DailyJournal() {
       <div className="border-b-2 border-primary pb-4">
         <div className="flex items-center gap-4 mb-4">
           <NotebookPen className="text-primary flex-shrink-0" size={40} />
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-widest uppercase text-primary">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-wide md:tracking-widest uppercase text-primary">
             Daily Journal
           </h1>
         </div>

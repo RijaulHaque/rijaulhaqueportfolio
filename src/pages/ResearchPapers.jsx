@@ -8,7 +8,7 @@ export default function ResearchPapers() {
       <div className="max-w-2xl border-b-2 border-primary pb-4">
         <div className="flex items-center space-x-4 mb-4">
           <BookOpen className="text-primary" size={36} />
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-widest uppercase text-primary">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-wide md:tracking-widest uppercase text-primary">
             Research Papers
           </h1>
         </div>

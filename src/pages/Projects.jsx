@@ -7,7 +7,7 @@ export default function Projects() {
       <div className="max-w-2xl border-b-2 border-primary pb-4">
         <div className="flex items-center gap-4 mb-4">
           <FolderGit2 className="text-primary flex-shrink-0" size={40} />
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-widest uppercase text-primary">Projects & Achievements</h1>
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-wide md:tracking-widest uppercase text-primary">Projects & Achievements</h1>
         </div>
         <p className="text-xl text-primary/80 font-semibold italic">
           A showcase of my recent academic and personal projects. Building things to solve real problems.

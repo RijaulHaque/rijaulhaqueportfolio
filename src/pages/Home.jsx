@@ -79,7 +79,7 @@ export default function Home() {
       <section className="relative w-full min-h-[calc(100vh-80px)] flex flex-col justify-start px-6 md:px-16 pt-12 overflow-hidden mb-20 bg-background z-20">
 
         {/* Enormous Background Sketch — LiDAR Point Cloud */}
-        <div className="absolute bottom-0 right-[-5%] md:right-0 w-[80%] md:w-[60%] lg:w-[50%] max-w-5xl z-0 pointer-events-none">
+        <div className="absolute bottom-0 right-[-5%] md:right-0 w-[80%] md:w-[60%] lg:w-[50%] max-w-5xl z-0 pointer-events-none opacity-5 md:opacity-100">
           <PointCloudCanvas src={sketchImg} />
         </div>
 
@@ -117,7 +117,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 pt-16 border-t-2 border-primary/20">
           {/* Education Section */}
           <section className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-widest uppercase border-b-2 border-primary inline-block pb-2 mb-4">Education</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-widest uppercase border-b-2 border-primary inline-block pb-2 mb-4">Education</h2>
             
             <div className="relative pl-6 border-l-2 border-primary">
               <div className="absolute -left-[7px] top-2 w-3 h-3 rounded-full border-2 border-primary bg-background" />
@@ -134,7 +134,7 @@ export default function Home() {
 
           {/* Research Interests Section - From CV */}
           <section className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-widest uppercase border-b-2 border-primary inline-block pb-2 mb-4">Research Interests</h2>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-widest uppercase border-b-2 border-primary inline-block pb-2 mb-4">Research Interests</h2>
             
             <div className="space-y-6">
               <div className="p-5 border-2 border-primary bg-card shadow-[4px_4px_0px_var(--shadow-color)] hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--shadow-color)] transition-all">
